@@ -2,169 +2,492 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#ffffff" />
+  <meta name="description" content="A U.S.-based R&D company advancing in silico discovery across immunology, proteomics, genomics, peptide science, molecular medicine, and longevity." />
   <title>Bioinformatics Company</title>
-
-  <meta name="title" content="Bioinformatics Company" />
-  <meta name="description" content="A U.S.-based R&D company advancing in silico discovery across immunology, proteomics, genomics, peptide science, molecular medicine, longevity, and fundamental biomedical research." />
 
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://bioinformaticscompany.com/" />
   <meta property="og:title" content="Bioinformatics Company" />
-  <meta property="og:description" content="A U.S.-based R&D company advancing in silico discovery across immunology, proteomics, genomics, peptide science, molecular medicine, longevity, and fundamental biomedical research." />
+  <meta property="og:description" content="A U.S.-based R&D company advancing in silico discovery across immunology, proteomics, genomics, peptide science, molecular medicine, and longevity." />
   <meta property="og:image" content="https://bioinformaticscompany.com/4FFE83C6-687A-4086-8CAF-62DDEC590FA6.png" />
 
   <meta property="twitter:card" content="summary_large_image" />
   <meta property="twitter:url" content="https://bioinformaticscompany.com/" />
   <meta property="twitter:title" content="Bioinformatics Company" />
-  <meta property="twitter:description" content="A U.S.-based R&D company advancing in silico discovery across immunology, proteomics, genomics, peptide science, molecular medicine, longevity, and fundamental biomedical research." />
+  <meta property="twitter:description" content="A U.S.-based R&D company advancing in silico discovery across immunology, proteomics, genomics, peptide science, molecular medicine, and longevity." />
   <meta property="twitter:image" content="https://bioinformaticscompany.com/4FFE83C6-687A-4086-8CAF-62DDEC590FA6.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter+Tight:wght@200;300;500&family=Newsreader:ital,wght@1,300&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      /* Color Palette */
-      --page-bg: #f9fafb;
-      --card-bg: #ffffff;
-      --ink-dark: #111827;
-      --ink-muted: #4b5563;
-      --border-light: #e5e7eb;
-      
-      /* Shadows */
-      --shadow-premium: 0 20px 40px -10px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+      --paper: #ffffff;
+      --ink: #14181b;
+      --ink-2: #363d44;
+      --graphite: #4d555c;
+      --mute: #6b7278;
+      --faint: #9aa0a6;
+      --line: rgba(20, 24, 27, 0.10);
+      --line-2: rgba(20, 24, 27, 0.18);
+      --magenta: 176, 106, 142;
+      --slate: 110, 137, 166;
+      --shadow:
+        0 1px 0 rgba(20, 24, 27, 0.02),
+        0 26px 64px -30px rgba(20, 24, 27, 0.20),
+        0 8px 26px -18px rgba(20, 24, 27, 0.12);
+
+      --sans: "Inter Tight", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      --serif: "Newsreader", Georgia, "Times New Roman", serif;
     }
 
-    * { 
-      box-sizing: border-box; 
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; }
 
-    html, body {
-      background-color: var(--page-bg);
-      color: var(--ink-dark);
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    html, body { margin: 0; min-height: 100%; }
+
+    body {
+      min-height: 100vh;
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      padding: clamp(16px, 4vw, 56px) clamp(12px, 3.2vw, 44px);
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
     }
 
-    /* Fixed Layout: Allows natural scrolling on short screens */
-    body {
-      min-height: 100vh;
+    /* faint engineering / graph-paper field, fading toward the edges */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(20, 24, 27, 0.028) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(20, 24, 27, 0.028) 1px, transparent 1px);
+      background-size: 30px 30px;
+      -webkit-mask-image: radial-gradient(circle at 50% 36%, #000 0%, rgba(0,0,0,0.55) 46%, transparent 80%);
+              mask-image: radial-gradient(circle at 50% 36%, #000 0%, rgba(0,0,0,0.55) 46%, transparent 80%);
+    }
+
+    .plate {
+      width: min(1120px, 100%);
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      padding: clamp(34px, 5vw, 76px) clamp(20px, 5vw, 84px) clamp(34px, 4.4vw, 64px);
+      text-align: center;
+    }
+
+    /* ── Eyebrow ─────────────────────────────── */
+    .eyebrow {
       display: flex;
       flex-direction: column;
-      padding: clamp(1.5rem, 4vw, 3rem);
+      align-items: center;
+      gap: 14px;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 34px;
+      height: 1px;
+      background: var(--line-2);
+    }
+    .eyebrow span {
+      font-family: var(--mono);
+      font-size: clamp(10px, 1.05vw, 12px);
+      font-weight: 500;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+      color: var(--mute);
+      padding-left: 0.34em; /* optical balance for tracking */
     }
 
-    /* Main Card Layout */
-    main {
-      background: var(--card-bg);
-      width: 100%;
-      max-width: 1100px;
-      margin: auto; /* Centers the card vertically and horizontally */
-      border: 1px solid var(--border-light);
-      border-radius: 16px;
-      box-shadow: var(--shadow-premium);
-      padding: clamp(2rem, 5vw, 4.5rem) clamp(1rem, 4vw, 3.5rem);
-      text-align: center;
-      
-      /* Subtle entry animation */
-      opacity: 0;
-      transform: translateY(15px);
-      animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    /* ── Wordmark ────────────────────────────── */
+    .mark {
+      margin: clamp(20px, 2.6vw, 30px) 0 0;
+      font-weight: 200;
+      color: var(--ink);
+      line-height: 0.96;
+      text-wrap: balance;
+    }
+    .mark-line { display: block; }
+    .mark-line.one {
+      font-size: clamp(1.9rem, 9.2vw, 5.1rem);
+      letter-spacing: 0.018em;
+    }
+    .mark-line.two {
+      margin-top: 0.08em;
+      font-size: clamp(1.7rem, 8vw, 4.5rem);
+      letter-spacing: 0.30em;
+      color: var(--ink-2);
+      padding-left: 0.30em;
     }
 
-    /* Typography: Header */
-    .name {
-      font-size: clamp(2.2rem, 5vw, 4rem);
-      line-height: 1.1;
-      font-weight: 300;
-      letter-spacing: -0.03em;
-      margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
-    }
-
-    .name span {
-      display: inline-block;
-    }
-
-    .name span:last-child {
-      font-weight: 400;
-    }
-
-    /* Image / Diagram Container */
+    /* ── Figure (the signature) ──────────────── */
     .figure {
-      width: 100%;
-      max-width: 900px;
-      margin: 0 auto clamp(1.5rem, 4vw, 3rem);
-      padding: 1rem;
-      border: 1px solid var(--border-light);
-      border-radius: 8px;
+      position: relative;
+      margin: clamp(34px, 5vw, 56px) auto 0;
+      padding: clamp(26px, 3.4vw, 42px) clamp(18px, 3.6vw, 52px);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--paper);
+    }
+    .tick {
+      position: absolute;
+      width: 9px;
+      height: 9px;
+      pointer-events: none;
+    }
+    .tick.tl { top: -1px; left: -1px;  border-top: 1px solid var(--line-2); border-left: 1px solid var(--line-2); }
+    .tick.tr { top: -1px; right: -1px; border-top: 1px solid var(--line-2); border-right: 1px solid var(--line-2); }
+    .tick.bl { bottom: -1px; left: -1px;  border-bottom: 1px solid var(--line-2); border-left: 1px solid var(--line-2); }
+    .tick.br { bottom: -1px; right: -1px; border-bottom: 1px solid var(--line-2); border-right: 1px solid var(--line-2); }
+
+    .figure-grid {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      grid-template-areas:
+        "l art r"
+        "bot bot bot";
+      align-items: center;
+      column-gap: clamp(12px, 2.4vw, 30px);
+      row-gap: clamp(14px, 1.8vw, 20px);
     }
 
-    .figure img {
+    .lab {
+      font-family: var(--mono);
+      font-size: clamp(9.5px, 1.02vw, 11.5px);
+      letter-spacing: 0.15em;
+      line-height: 1.55;
+      text-transform: uppercase;
+      color: var(--mute);
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+    .lab-l   { grid-area: l; text-align: left; align-items: flex-start; }
+    .lab-r   { grid-area: r; text-align: right; align-items: flex-end; }
+    .lab-bot { grid-area: bot; text-align: center; align-items: center; justify-self: center; }
+
+    .art {
+      grid-area: art;
       display: block;
       width: 100%;
-      height: auto;
-      object-fit: contain;
+    }
+    .art svg { display: block; width: 100%; height: auto; color: var(--ink); }
+
+    /* ── Statement ───────────────────────────── */
+    .statement {
+      margin: clamp(32px, 4.6vw, 50px) auto 0;
+
+      font-weight: 300;
+      font-size: clamp(1.06rem, 1.55vw, 1.5rem);
+      line-height: 1.5;
+      letter-spacing: -0.012em;
+      color: var(--graphite);
+      text-wrap: balance;
+    }
+    .statement strong { font-weight: 500; color: var(--ink-2); }
+    .statement em {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--ink-2);
+      letter-spacing: 0;
+      font-size: 1.04em;
     }
 
-    /* Typography: Description */
-    .description {
-      width: 100%;
-      max-width: 850px;
-      margin: 0 auto;
-      color: var(--ink-muted);
-      font-size: clamp(1.05rem, 2vw, 1.25rem);
-      line-height: 1.6;
-      font-weight: 400;
+    /* ── Discipline index ────────────────────── */
+    .index {
+      margin: clamp(30px, 4.4vw, 48px) auto 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: clamp(16px, 2.4vw, 22px);
+    }
+    .divider { width: min(280px, 56%); height: 1px; background: var(--line); }
+    .index-line {
+      max-width: 62ch;
+      font-family: var(--mono);
+      font-size: clamp(9.5px, 1vw, 11.5px);
+      letter-spacing: 0.16em;
+      line-height: 2;
+      text-transform: uppercase;
+      color: var(--mute);
+    }
+    .index-line .dot { color: var(--line-2); padding: 0 0.15em; }
+
+    /* ── Fine print ──────────────────────────── */
+    .fineprint {
+      margin: clamp(22px, 3.4vw, 30px) 0 0;
+      font-family: var(--mono);
+      font-size: clamp(9px, 0.9vw, 10.5px);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--faint);
     }
 
-    /* Animations */
-    @keyframes fadeUp {
-      to {
+    /* ── Entrance motion ─────────────────────── */
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: none; }
+    }
+    .eyebrow, .mark, .figure, .statement, .index, .fineprint {
+      animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    }
+    .eyebrow   { animation-delay: 0.05s; }
+    .mark      { animation-delay: 0.14s; }
+    .figure    { animation-delay: 0.26s; }
+    .statement { animation-delay: 0.42s; }
+    .index     { animation-delay: 0.54s; }
+    .fineprint { animation-delay: 0.62s; }
+
+    @keyframes draw { to { stroke-dashoffset: 0; } }
+    .connector {
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1;
+      animation: draw 1.5s ease 0.55s forwards;
+    }
+
+    /* ── Responsive: stack the figure legend on small screens ─ */
+    @media (max-width: 640px) {
+      .plate {
+        border-radius: 13px;
+        padding: 30px 16px 34px;
+      }
+      .figure { padding: 24px 16px 22px; }
+      .figure-grid {
+        grid-template-columns: 1fr;
+        grid-template-areas: "art" "l" "r" "bot";
+        row-gap: 6px;
+      }
+      .lab-l, .lab-r, .lab-bot {
+        text-align: center;
+        align-items: center;
+        justify-self: center;
+      }
+      .lab-l { margin-top: 10px; }
+      .statement { max-width: 38ch; font-size: 1.04rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .eyebrow, .mark, .figure, .statement, .index, .fineprint {
+        animation: none;
         opacity: 1;
-        transform: translateY(0);
+        transform: none;
       }
-    }
-
-    /* Mobile-Specific Adjustments */
-    @media (max-width: 768px) {
-      body {
-        /* Increased top and bottom padding specifically for mobile devices */
-        padding: 2.5rem 1rem; 
-      }
-      main {
-        border-radius: 12px;
-        padding: 2rem 1.25rem; 
-      }
-      .name {
-        letter-spacing: -0.04em;
-      }
-      .figure {
-        padding: 0;
-        border: none; 
-        margin-bottom: 1.5rem;
-      }
-      .description {
-        font-size: 1.1rem; 
-      }
+      .connector { animation: none; stroke-dashoffset: 0; }
     }
   </style>
 </head>
 <body>
+  <main class="plate" aria-label="Bioinformatics Company">
 
-  <main aria-label="Bioinformatics company landing page">
-    <h1 class="name">
-      <span>BIOINFORMATICS</span> <span>COMPANY</span>
+
+
+    <h1 class="mark">
+      <span class="mark-line one">BIOINFORMATICS</span>
+      <span class="mark-line two">COMPANY</span>
     </h1>
 
-    <div class="figure">
-      <img src="4FFE83C6-687A-4086-8CAF-62DDEC590FA6.png" alt="Scientific multi-omics illustration with proteomics dynamics, genomic pathways, and predictive modeling" />
-    </div>
+    <figure class="figure">
+      <span class="tick tl"></span><span class="tick tr"></span>
+      <span class="tick bl"></span><span class="tick br"></span>
 
-    <p class="description">
-      A U.S.-based R&D company advancing in silico discovery across immunology, proteomics, genomics, peptide science, molecular medicine, longevity, and fundamental biomedical research through AI-driven modeling and Web3-native scientific infrastructure.
-    </p>
+      <div class="figure-grid">
+        <figcaption class="lab lab-l"><span>Proteome</span><span>Dynamics</span></figcaption>
+        <figcaption class="lab lab-r"><span>Predictive</span><span>Modeling</span></figcaption>
+
+        <div class="art">
+          <svg id="omics" viewBox="0 30 1000 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <filter id="ds" x="-20%" y="-20%" width="140%" height="150%">
+                <feDropShadow dx="3" dy="5" stdDeviation="5" flood-color="#14181b" flood-opacity="0.10"/>
+              </filter>
+            </defs>
+
+            <g fill="none" stroke="currentColor" stroke-opacity="0.30" stroke-width="1.1">
+              <path class="connector" pathLength="1" d="M272 118 C 380 96 540 96 652 118"/>
+              <path class="connector" pathLength="1" d="M276 156 C 400 150 530 150 650 156"/>
+              <path class="connector" pathLength="1" d="M280 196 C 400 210 540 206 648 192"/>
+            </g>
+
+            <g>
+              <rect class="hm-panel" data-cols="14" data-rows="9"  x="66"  y="70"  width="150" height="104" rx="3" fill="#fff" stroke="currentColor" stroke-opacity="0.20" filter="url(#ds)"/>
+              <rect class="hm-panel" data-cols="14" data-rows="9"  x="120" y="112" width="150" height="104" rx="3" fill="#fff" stroke="currentColor" stroke-opacity="0.20" filter="url(#ds)"/>
+              <rect class="hm-panel" data-cols="11" data-rows="7"  x="92"  y="150" width="120" height="82"  rx="3" fill="#fff" stroke="currentColor" stroke-opacity="0.20" filter="url(#ds)"/>
+            </g>
+            <g id="heatmap-cells"></g>
+
+            <g fill="none" stroke="currentColor" stroke-opacity="0.65" stroke-width="1">
+              <path d="M117 260 L106 279 L84 279 L73 260 L84 241 L106 241 Z"/>
+              <line x1="103" y1="244" x2="103" y2="257"/>
+              <line x1="78"  y1="258" x2="87"  y2="245"/>
+              <line x1="117" y1="260" x2="135" y2="260"/>
+              <g fill="#fff">
+                <circle cx="117" cy="260" r="3.2"/><circle cx="106" cy="279" r="3.2"/>
+                <circle cx="84"  cy="279" r="3.2"/><circle cx="73"  cy="260" r="3.2"/>
+                <circle cx="84"  cy="241" r="3.2"/><circle cx="106" cy="241" r="3.2"/>
+                <circle cx="135" cy="260" r="3.2"/>
+              </g>
+            </g>
+
+            <g fill="none" stroke="currentColor" stroke-opacity="0.6" stroke-width="1.1">
+              <path d="M672 112 C 700 80 742 86 772 120"/>
+              <path d="M704 192 C 700 226 736 234 750 210"/>
+              <path d="M664 236 L703 250 L700 240 L726 248 L716 256 L718 246 L703 250" stroke-opacity="0.5"/>
+            </g>
+            <g transform="translate(690 150) rotate(-24)">
+              <rect x="-15" y="-46" width="30" height="92" rx="9" fill="rgba(110,137,166,0.18)" stroke="currentColor" stroke-opacity="0.6" stroke-width="1"/>
+              <g stroke="currentColor" stroke-opacity="0.45" stroke-width="0.9">
+                <line x1="-12" y1="-30" x2="12" y2="-30"/><line x1="-12" y1="-14" x2="12" y2="-14"/>
+                <line x1="-12" y1="2"   x2="12" y2="2"/><line x1="-12" y1="18"  x2="12" y2="18"/>
+                <line x1="-12" y1="34"  x2="12" y2="34"/>
+              </g>
+            </g>
+            <g transform="translate(756 162) rotate(20)">
+              <rect x="-15" y="-37" width="30" height="74" rx="9" fill="rgba(176,106,142,0.16)" stroke="currentColor" stroke-opacity="0.6" stroke-width="1"/>
+              <g stroke="currentColor" stroke-opacity="0.45" stroke-width="0.9">
+                <line x1="-12" y1="-22" x2="12" y2="-22"/><line x1="-12" y1="-6" x2="12" y2="-6"/>
+                <line x1="-12" y1="10"  x2="12" y2="10"/><line x1="-12" y1="26"  x2="12" y2="26"/>
+              </g>
+            </g>
+
+            <g stroke="currentColor" stroke-opacity="0.45" stroke-width="0.85" fill="none">
+              <line x1="904" y1="166" x2="905" y2="118"/><line x1="904" y1="166" x2="946" y2="150"/>
+              <line x1="904" y1="166" x2="933" y2="198"/><line x1="904" y1="166" x2="884" y2="206"/>
+              <line x1="904" y1="166" x2="860" y2="160"/><line x1="905" y1="118" x2="956" y2="112"/>
+              <line x1="946" y1="150" x2="933" y2="198"/><line x1="884" y1="206" x2="860" y2="160"/>
+              <line x1="860" y1="160" x2="905" y2="118"/>
+            </g>
+            <g>
+              <circle cx="904" cy="166" r="4.6" fill="currentColor" fill-opacity="0.85"/>
+              <circle cx="946" cy="150" r="3.6" fill="currentColor" fill-opacity="0.7"/>
+              <circle cx="860" cy="160" r="3.4" fill="currentColor" fill-opacity="0.7"/>
+              <g fill="#fff" stroke="currentColor" stroke-opacity="0.6" stroke-width="0.9">
+                <circle cx="905" cy="118" r="3.2"/><circle cx="933" cy="198" r="3.2"/>
+                <circle cx="884" cy="206" r="3.0"/><circle cx="956" cy="112" r="2.8"/>
+              </g>
+            </g>
+
+            <g id="dna"></g>
+          </svg>
+        </div>
+
+        <figcaption class="lab lab-bot"><span>Genomic Pathways</span></figcaption>
+      </div>
+    </figure>
+
+    <p class="statement"><strong>A U.S.-based R&amp;D company</strong> advancing <em>in silico</em> discovery across immunology, proteomics, genomics, peptide science, molecular medicine, longevity, and fundamental biomedical research through AI-driven modeling and Web3-native scientific infrastructure.</p>
+
+   
+
+    <p class="fineprint">© 2026 — Bioinformatics Company</p>
   </main>
 
+  <script>
+    (function () {
+      var NS = "http://www.w3.org/2000/svg";
+      var svg = document.getElementById("omics");
+      if (!svg) return;
+
+      // deterministic PRNG so the figure looks identical on every load
+      function mulberry32(a) {
+        return function () {
+          a |= 0; a = (a + 0x6D2B79F5) | 0;
+          var t = Math.imul(a ^ (a >>> 15), 1 | a);
+          t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+          return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+        };
+      }
+      var rnd = mulberry32(0x9e3779b1);
+
+      function cellFill(r) {
+        var a;
+        if (r < 0.42)      { a = 0.05 + rnd() * 0.10; return "rgba(20,24,27," + a.toFixed(3) + ")"; }
+        else if (r < 0.64) { a = 0.12 + rnd() * 0.38; return "rgba(110,137,166," + a.toFixed(3) + ")"; }
+        else if (r < 0.84) { a = 0.12 + rnd() * 0.43; return "rgba(176,106,142," + a.toFixed(3) + ")"; }
+        else               { return "rgba(20,24,27,0.03)"; }
+      }
+
+      // ── heatmap cells ──
+      var cellGroup = document.getElementById("heatmap-cells");
+      var panels = svg.querySelectorAll(".hm-panel");
+      var PAD = 5, GAP = 1.4;
+      panels.forEach(function (p) {
+        var px = parseFloat(p.getAttribute("x"));
+        var py = parseFloat(p.getAttribute("y"));
+        var pw = parseFloat(p.getAttribute("width"));
+        var ph = parseFloat(p.getAttribute("height"));
+        var cols = parseInt(p.getAttribute("data-cols"), 10);
+        var rows = parseInt(p.getAttribute("data-rows"), 10);
+        var cw = (pw - 2 * PAD - (cols - 1) * GAP) / cols;
+        var ch = (ph - 2 * PAD - (rows - 1) * GAP) / rows;
+        for (var row = 0; row < rows; row++) {
+          for (var col = 0; col < cols; col++) {
+            var rect = document.createElementNS(NS, "rect");
+            rect.setAttribute("x", (px + PAD + col * (cw + GAP)).toFixed(2));
+            rect.setAttribute("y", (py + PAD + row * (ch + GAP)).toFixed(2));
+            rect.setAttribute("width", cw.toFixed(2));
+            rect.setAttribute("height", ch.toFixed(2));
+            rect.setAttribute("rx", "0.8");
+            rect.setAttribute("fill", cellFill(rnd()));
+            cellGroup.appendChild(rect);
+          }
+        }
+      });
+
+      // ── DNA double helix ──
+      var dna = document.getElementById("dna");
+      var x0 = 430, x1 = 600, yc = 312, A = 22, P = 86;
+      var TWO_PI = Math.PI * 2;
+      function sineY(x, sign) { return yc + sign * A * Math.sin(TWO_PI * (x - x0) / P); }
+
+      var top = [], bot = [];
+      for (var x = x0; x <= x1 + 0.01; x += 3) {
+        top.push(x.toFixed(1) + "," + sineY(x, 1).toFixed(1));
+        bot.push(x.toFixed(1) + "," + sineY(x, -1).toFixed(1));
+      }
+      function strand(points) {
+        var pl = document.createElementNS(NS, "polyline");
+        pl.setAttribute("points", points.join(" "));
+        pl.setAttribute("fill", "none");
+        pl.setAttribute("stroke", "currentColor");
+        pl.setAttribute("stroke-opacity", "0.7");
+        pl.setAttribute("stroke-width", "1.4");
+        pl.setAttribute("stroke-linecap", "round");
+        dna.appendChild(pl);
+      }
+      strand(top);
+      strand(bot);
+
+      for (var rx = x0 + 10; rx <= x1 - 6; rx += 18) {
+        var y1 = sineY(rx, 1), y2 = sineY(rx, -1);
+        var line = document.createElementNS(NS, "line");
+        line.setAttribute("x1", rx.toFixed(1)); line.setAttribute("y1", y1.toFixed(1));
+        line.setAttribute("x2", rx.toFixed(1)); line.setAttribute("y2", y2.toFixed(1));
+        line.setAttribute("stroke", "currentColor");
+        line.setAttribute("stroke-opacity", "0.32");
+        line.setAttribute("stroke-width", "1");
+        dna.appendChild(line);
+        [y1, y2].forEach(function (yy) {
+          var c = document.createElementNS(NS, "circle");
+          c.setAttribute("cx", rx.toFixed(1)); c.setAttribute("cy", yy.toFixed(1));
+          c.setAttribute("r", "1.7");
+          c.setAttribute("fill", "currentColor");
+          c.setAttribute("fill-opacity", "0.55");
+          dna.appendChild(c);
+        });
+      }
+    })();
+  </script>
 </body>
 </html>
