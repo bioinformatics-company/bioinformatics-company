@@ -4,6 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bioinformatics Company</title>
+
+  <meta name="title" content="Bioinformatics Company" />
+  <meta name="description" content="A U.S.-based R&D company advancing in silico discovery across immunology, proteomics, genomics, peptide science, molecular medicine, longevity, and fundamental biomedical research." />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://bioinformaticscompany.com/" />
+  <meta property="og:title" content="Bioinformatics Company" />
+  <meta property="og:description" content="A U.S.-based R&D company advancing in silico discovery across immunology, proteomics, genomics, peptide science, molecular medicine, longevity, and fundamental biomedical research." />
+  <meta property="og:image" content="https://bioinformaticscompany.com/4FFE83C6-687A-4086-8CAF-62DDEC590FA6.png" />
+
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://bioinformaticscompany.com/" />
+  <meta property="twitter:title" content="Bioinformatics Company" />
+  <meta property="twitter:description" content="A U.S.-based R&D company advancing in silico discovery across immunology, proteomics, genomics, peptide science, molecular medicine, longevity, and fundamental biomedical research." />
+  <meta property="twitter:image" content="https://bioinformaticscompany.com/4FFE83C6-687A-4086-8CAF-62DDEC590FA6.png" />
+
   <style>
     :root {
       /* Color Palette */
@@ -13,7 +29,7 @@
       --ink-muted: #4b5563;
       --border-light: #e5e7eb;
       
-      /* Shadows & Effects */
+      /* Shadows */
       --shadow-premium: 0 20px 40px -10px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
     }
 
@@ -24,7 +40,6 @@
     }
 
     html, body {
-      height: 100%;
       background-color: var(--page-bg);
       color: var(--ink-dark);
       font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -32,12 +47,12 @@
       text-rendering: optimizeLegibility;
     }
 
-    /* Centering Wrapper */
+    /* Fixed Layout: Allows natural scrolling on short screens */
     body {
+      min-height: 100vh;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem;
+      flex-direction: column;
+      padding: clamp(1.5rem, 4vw, 3rem);
     }
 
     /* Main Card Layout */
@@ -45,10 +60,11 @@
       background: var(--card-bg);
       width: 100%;
       max-width: 1100px;
+      margin: auto; /* Centers the card vertically and horizontally */
       border: 1px solid var(--border-light);
       border-radius: 16px;
       box-shadow: var(--shadow-premium);
-      padding: clamp(2.5rem, 5vw, 5rem) clamp(1.5rem, 4vw, 4rem);
+      padding: clamp(2rem, 5vw, 4.5rem) clamp(1rem, 4vw, 3.5rem);
       text-align: center;
       
       /* Subtle entry animation */
@@ -59,12 +75,11 @@
 
     /* Typography: Header */
     .name {
-      font-size: clamp(2.5rem, 6vw, 4rem);
-      line-height: 1.05;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      line-height: 1.1;
       font-weight: 300;
       letter-spacing: -0.03em;
       margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
-      color: var(--ink-dark);
     }
 
     .name span {
@@ -72,14 +87,14 @@
     }
 
     .name span:last-child {
-      font-weight: 400; /* Subtle contrast between words */
+      font-weight: 400;
     }
 
     /* Image / Diagram Container */
     .figure {
       width: 100%;
       max-width: 900px;
-      margin: 0 auto clamp(2rem, 4vw, 3.5rem);
+      margin: 0 auto clamp(1.5rem, 4vw, 3rem);
       padding: 1rem;
       border: 1px solid var(--border-light);
       border-radius: 8px;
@@ -94,13 +109,13 @@
 
     /* Typography: Description */
     .description {
-      max-width: 800px;
+      width: 100%;
+      max-width: 850px;
       margin: 0 auto;
       color: var(--ink-muted);
-      font-size: clamp(1.125rem, 2vw, 1.35rem);
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
       line-height: 1.6;
       font-weight: 400;
-      text-wrap: balance;
     }
 
     /* Animations */
@@ -112,19 +127,25 @@
     }
 
     /* Mobile-Specific Adjustments */
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
       body {
-        padding: 1rem;
+        /* Increased top and bottom padding specifically for mobile devices */
+        padding: 2.5rem 1rem; 
       }
       main {
         border-radius: 12px;
+        padding: 2rem 1.25rem; 
       }
       .name {
-        letter-spacing: -0.05em;
+        letter-spacing: -0.04em;
       }
       .figure {
-        padding: 0.5rem;
-        border: none; /* Remove border on tight mobile screens for cleaner look */
+        padding: 0;
+        border: none; 
+        margin-bottom: 1.5rem;
+      }
+      .description {
+        font-size: 1.1rem; 
       }
     }
   </style>
