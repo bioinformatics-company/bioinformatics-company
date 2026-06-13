@@ -187,7 +187,6 @@
     /* ── Statement ───────────────────────────── */
     .statement {
       margin: clamp(32px, 4.6vw, 50px) auto 0;
-
       font-weight: 300;
       font-size: clamp(1.06rem, 1.55vw, 1.5rem);
       line-height: 1.5;
@@ -275,7 +274,13 @@
         justify-self: center;
       }
       .lab-l { margin-top: 10px; }
-      .statement { max-width: 38ch; font-size: 1.04rem; }
+      
+      /* FIXED: Removed max-width limit and text-wrap balance for mobile so it stretches full width */
+      .statement { 
+        max-width: 100%; 
+        font-size: 1.04rem; 
+        text-wrap: normal; 
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -291,8 +296,6 @@
 <body>
   <main class="plate" aria-label="Bioinformatics Company">
 
-
-
     <h1 class="mark">
       <span class="mark-line one">BIOINFORMATICS</span>
       <span class="mark-line two">COMPANY</span>
@@ -303,7 +306,8 @@
       <span class="tick bl"></span><span class="tick br"></span>
 
       <div class="figure-grid">
-
+        <figcaption class="lab lab-l"><span>Proteome</span><span>Dynamics</span></figcaption>
+        <figcaption class="lab lab-r"><span>Predictive</span><span>Modeling</span></figcaption>
 
         <div class="art">
           <svg id="omics" viewBox="0 30 1000 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -381,12 +385,11 @@
           </svg>
         </div>
 
+        <figcaption class="lab lab-bot"><span>Genomic Pathways</span></figcaption>
       </div>
     </figure>
 
     <p class="statement"><strong>A U.S.-based R&amp;D company</strong> advancing <em>in silico</em> discovery across immunology, proteomics, genomics, peptide science, molecular medicine, longevity, and fundamental biomedical research through AI-driven modeling and Web3-native scientific infrastructure.</p>
-
-   
 
     <p class="fineprint">© 2026 — Bioinformatics Company</p>
   </main>
